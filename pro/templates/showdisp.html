@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adminlogin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <style>  
+          
+      
+      
+      .card {
+        
+        float: left;
+        padding: 18px;
+        
+        margin-left: 6px;
+      }
+      
+      
+
+      
+      </style>
+</head>
+<body>
+  <ul class="nav">
+        
+       
+    <li class="nav-item">
+      <a class="nav-link" href="/">Logout</a>
+      <a class="nav-link" href="/sum">summary</a>
+    </li>
+    
+  </ul>
+  <form action='/s/{{venuet['vid']}}'  method='GET'  >
+    
+        
+    <button type="submit" class="btn btn-primary">ADD</button>
+
+ </form>
+
+
+   
+  
+    {% for show in shows %}
+             
+                   
+                   
+         <div class="card" style="width: 18rem;">
+          <img src="{{url_for('static',filename='1.jpg')}}"class="card-img-top" >
+            <div class="card-body">
+              <h5 class="card-title">{{show.showname}}</h5>
+              <p class="card-text">{{show.rating}}</p>
+              
+       
+                    <a href="/showedit/{{show["sid"]}}/{{venuet["vid"]}}">editing</a>
+                     <a href="/showdelete/{{show["sid"]}}/{{venuet["vid"]}}">deleting</a>
+            </div>
+        </div>
+    {% endfor %}

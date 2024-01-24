@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adminlogin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <style>  
+          
+      
+      
+      .card {
+        
+        float: left;
+        padding: 18px;
+        
+        margin-left: 6px;
+      }
+      
+      
+
+      
+      </style>
+</head>
+<body>
+  <body>
+    <ul class="nav">
+        
+       
+        <li class="nav-item">
+          <a class="nav-link" href="/">Logout</a>
+          <a class="nav-link" href="/sum">summary</a>
+        </li>
+        
+      </ul>
+    <div class="container text-center">
+        
+        <div = "jumbotron">
+            <h1 class ="diaplay-10">welcome<h1>
+        </div>
+      
+         
+         <form action='/venue' >
+        
+            <button type="submit" class="btn btn-primary">ADD</button>
+       
+         </form>
+ 
+    
+  
+    <form action='/find'  method='POST'  >
+        <div class="mb-3">
+          <label  class="form-label">search</label>
+          <input type="username" class="form-control" name="FIND" >
+          <div id="emailHelp" class="form-text">We'll never share your details with anyone else.</div>
+        </div>
+    </form>
+    {%for venue in venues %}
+       
+
+          
+        
+        
+         <div class="card" style="width: 18rem;">
+            <img src="../static/1.jpg" class="card-img-top" >
+            <div class="card-body">
+              <h5 class="card-title">{{venue.venue}}</h5>
+              <p class="card-text">{{venue.loc}}</p>
+              
+               <a href="/show/{{venue['vid']}}">createshow</a>
+
+                <a href="/venueedit/{{venue["vid"]}}">editing</a>
+
+               <a href="/venuedelete/{{venue["vid"]}}">deleting</a>
+            </div>
+          </div>
+       
+    {%endfor%}
+
+   
+   
+ 
+ 
+
+</body>
+</html>

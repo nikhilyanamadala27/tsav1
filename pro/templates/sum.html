@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>summary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+     <script type="text/javascript" src="/static/script.js"></script>
+  </head>
+</head>
+
+<body> 
+
+ 
+
+<div class="container col-md-8" style="padding-top:40px">
+    <div class="card text-center">
+
+        <div class="card-header">
+            <div class="d-grid gap-2 d-md-block" id="charts">
+                <button class="btn btn-dark" type="button" id="bar">Bar Chart</button>
+                
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div>
+                <canvas id="stackedbar"></canvas>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    let labels = JSON.parse({{labels | tojson}})
+    let bookings = JSON.parse({{bookings | tojson}})
+    
+
+    
+    let bar = document.getElementById('bar');
+
+    bar.addEventListener('click', barchart)
+
+    const data = {
+        labels: labels,
+        datasets: [{
+        
+      
+        borderWidth: 4,
+        data: bookings,
+        }
+    ]};   
+
+    const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+    
+    const myChart = new Chart(document.getElementById('stackedbar'), config);
+        
+    function barchart() {
+        myChart.config.type = 'bar';
+        myChart.update();
+    }
+   
+</script>
+</body>
+</html>
